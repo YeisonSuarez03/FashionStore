@@ -1,0 +1,9 @@
+.ant-popover {
+    max-width: 365px;
+    width: 100%;
+}
+
+.products__avatar {
+    border: 1px solid #33333350 !important;
+    padding: 4px;
+}

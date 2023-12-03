@@ -1,0 +1,36 @@
+button.ant-btn:not(.ant-btn-block) {
+    max-width: 200px;
+}
+
+button.ant-btn:not(.disable-custom) {
+    width: 100%;
+    padding: 0.6rem;
+    height: auto;
+    max-height: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+button.ant-btn-primary:not(.ant-btn-block) {
+    max-width: 250px;
+}
+
+button.ant-btn-primary {
+    background: var(--primary);
+}
+
+button.btn-gray {
+    background: gray;
+    color: white;
+}
+
+@media screen and (max-width: 600px) {
+    button.ant-btn:not(.disable-custom) {
+        /* max-width: 125px; */
+        padding: 0.45rem;
+    }
+
+    button.ant-btn-primary:not(.disable-custom) {
+        max-width: 175px;
+    }
+}

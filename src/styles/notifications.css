@@ -1,0 +1,34 @@
+.success__notification{
+    background: #0cb347;
+    color: #FFF !important;
+    box-shadow: 1px 1px 20px 5px #0cb34750;
+}
+
+.info__notification{
+    background: #0c70b3;
+    color: #FFF !important;
+    box-shadow: 1px 1px 20px 5px #0c70b350;
+}
+
+.error__notification{
+    background: #c52d0b;
+    color: #FFF !important;
+    box-shadow: 1px 1px 20px 5px #c52d0b50;
+}
+
+.warning__notification{
+    background: #c5a30b;
+    color: #FFF !important;
+    box-shadow: 1px 1px 20px 5px #c5a30b50;
+}
+
+.ant-notification-notice .ant-notification-notice-icon,
+.ant-notification-notice .ant-notification-notice-message,
+.ant-notification-notice .ant-notification-notice-close
+{
+color: #FFF !important;
+}
+
+.ant-notification-notice-description{
+    color: #fff !important;
+}

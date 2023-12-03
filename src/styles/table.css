@@ -1,0 +1,47 @@
+/*HEADER STYLE*/
+
+.ant-table-thead > tr > th {
+    font-weight: bold;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--secondary) !important;
+}
+
+.table-row-selected-volcano,
+.table-row-selected-volcano > td
+ {
+    background-color: #cc191957 !important;
+}
+
+.table-row-selected-volcano:hover,
+.table-row-selected-volcano:hover > td
+ {
+    background-color: #cc19193b !important;
+}
+
+.table-row-selected-volcano * {
+    text-decoration: dashed;
+}
+
+.custom-table {
+    .ant-table {
+      background-color: #004A70;
+      color: white;
+    }
+  
+    .ant-table-thead > tr > th {
+      background-color: #004C85;
+      color: white;
+      
+    }
+  
+    .ant-table-tbody > tr > td {
+      background-color: #0284C7;
+      border-bottom: solid #0284C7 1px
+    }
+
+    .ant-table-cell-row-hover {
+        color: #4B5563;
+        cursor: pointer;
+    }
+
+}

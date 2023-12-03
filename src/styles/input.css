@@ -1,0 +1,130 @@
+/*INPUTS LABELS STYLE*/
+.ant-form-item-label>label,
+.ant-checkbox+span,
+span.ant-radio+* {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+    font-weight: bold !important;
+    font-size: 1rem;
+}
+
+/* TEXT INPUT STYLE */
+/* .ant-form-item input:not([disabled], :has(.ant-input-affix-wrapper)),
+.ant-form-item .ant-select:not(.ant-select-disabled) .ant-select-selector,
+.ant-form-item textarea:not(.ant-input-disabled),
+.ant-picker,
+.ant-form-item .ant-input-affix-wrapper,
+.ant-form-item .ant-input-affix-wrapper-disabled {
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
+} */
+
+.ant-form-item input,
+.ant-form-item input.ant-input,
+.ant-form-item .ant-picker-input > input,
+.ant-form-item .ant-select .ant-select-selector,
+.ant-form-item textarea,
+.ant-picker,
+.ant-form-item .ant-input-affix-wrapper:not(.rounded-full),
+.ant-form-item .ant-input-affix-wrapper-disabled {
+    border-radius: 0.75rem;
+}
+
+.ant-form-item input,
+.ant-form-item input.ant-input,
+.ant-form-item .ant-picker-input > input,
+.ant-form-item .ant-select .ant-select-selector,
+.ant-form-item textarea,
+.ant-picker,
+.ant-form-item .ant-input-affix-wrapper,
+.ant-form-item .ant-input-affix-wrapper-disabled {
+    padding: 0.75rem;
+}
+
+.ant-picker {
+    padding: 0 0.75rem;
+    width: 100%;
+}
+
+.ant-form-item .ant-select .ant-select-selector {
+    padding: 0.5rem 0.75rem;
+    min-height: 45px;
+}
+
+.ant-input-prefix {
+    padding-left: 11px;
+}
+
+
+/* INPUT SEARCH STYLE */
+
+.ant-form-item .ant-input-search button {
+    height: 48px !important;
+    border-radius: 0 0.75rem 0.75rem 0 !important;
+    max-height: 100% !important;
+}
+
+.ant-form-item .ant-input-search .ant-input-affix-wrapper {
+    border-radius: 0.75rem 0 0 0.75rem !important;
+}
+
+.ant-form-item .ant-input-affix-wrapper {
+    padding: 0px;
+}
+
+.ant-form-item .ant-input-search .ant-input-group-addon {
+    background: transparent
+}
+
+
+/* SELECT SEARCH */
+.ant-select-single {
+    height: 100%;
+}
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-search-input {
+    height: 100%;
+}
+
+.ant-select-selection-placeholder {
+    z-index: 10;
+}
+
+/* INPUT NUMBER */
+
+.custom-inputNumber input {
+    min-height: 43px;
+}
+
+/* SELECT FILTER WITH IMAGES */
+.adjust-height>.ant-select-selector {
+    min-height: 65px !important;
+}
+/* SELECT FILTER WITH IMAGES */
+.adjust-height input.ant-input {
+    min-height: 65px !important;
+}
+
+
+/* UPLOAD */
+.ant-upload.ant-upload-select{
+    width: 100%;
+}
+
+.isMultiple .ant-upload-list-item-container .ant-image,
+.isMultiple .ant-upload-list-item-container .ant-image img
+{
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+}
+
+/*SWITCH*/
+
+.ant-switch.ant-switch-checked.switch__schedule {
+    background: rgb(47, 175, 47);
+}
+
+[aria-checked="false"][type='button'].ant-switch.switch__schedule {
+    background-color: rgb(233, 67, 67);
+}

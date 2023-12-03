@@ -1,0 +1,39 @@
+canvas.react-pdf__Page__canvas {
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
+}
+
+.card__pdf-cover {
+    position: relative;
+}
+
+.card__pdf-cover:hover .card__pdf-preview {
+    opacity: 1;
+}
+
+.card__pdf-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    background: #00000070;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.adjustHeight__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
