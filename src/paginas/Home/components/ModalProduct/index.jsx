@@ -1,25 +1,48 @@
-import { Button, Form, InputNumber, Modal } from 'antd'
-import React from 'react'
+import { Button, Form, InputNumber, Modal, message } from 'antd'
+import React, { useEffect } from 'react'
 import { useImperativeHandle } from 'react'
 import { useCallback } from 'react'
 import { useState } from 'react'
 import { forwardRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearDataById } from '../../redux'
+import { clearDataById, clearResultsCart, setAddToCart } from '../../redux'
 import {IoIosColorPalette, IoMdResize } from 'react-icons/io';
 import { FaTshirt } from 'react-icons/fa';
 import { formatPrice } from '../../../../helpers/formatPrice'
+import { useForm } from 'antd/es/form/Form'
 
 export default forwardRef((props, ref) => {
 
+    const [form] = useForm()
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false)
-    const { dataById } = useSelector(state => state.products)
+    const { dataById, errorCart, resultCart } = useSelector(state => state.products)
 
     const close = useCallback(() => {
         setOpen(false)
         dispatch(clearDataById())
+        form?.resetFields()
     })
+
+    const handleSubmit = useCallback((values) => {
+        dispatch(setAddToCart({...dataById, quantity: values?.quantity, quantityMax: dataById?.quantity}))
+        close();
+    })
+
+    useEffect(() => {
+      if (resultCart) {
+        message.success(resultCart, 4)
+        dispatch(clearResultsCart())
+      }
+    }, [resultCart])
+
+    useEffect(() => {
+      if (errorCart) {
+        message.error(errorCart, 4)
+        dispatch(clearResultsCart())
+      }
+    }, [errorCart])
+    
     
 
     useImperativeHandle(
@@ -79,7 +102,9 @@ export default forwardRef((props, ref) => {
                         </div>
                         <div className='w-full'>
                             <Form
+                            form={form}
                             layout='vertical'
+                            onFinish={handleSubmit}
                             >
                                 <div className='w-full flex justify-start items-center gap-4 mt-5 px-5'>
                                 <Form.Item

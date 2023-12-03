@@ -1,20 +1,23 @@
-import { Checkbox, Form, Input, Result, Slider, Spin } from "antd";
+import { Checkbox, FloatButton, Form, Input, Result, Slider, Spin } from "antd";
 import { useForm } from "antd/es/form/Form";
 import React, { useCallback, useEffect, useRef } from "react";
 import { MdSearch } from "react-icons/md";
+import { FaCartPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { formatPrice } from "../../helpers/formatPrice";
 import ProductCard from "./components/ProductCard";
 import { filters } from "./data";
 import { search, setDataById, setFilter } from "./redux";
 import ModalProduct from "./components/ModalProduct";
+import DrawerCart from "./components/DrawerCart";
 
 export default () => {
   const dispatch = useDispatch();
   const [form] = useForm();
-  const modalRef = useRef()
+  const modalRef = useRef();
+  const drawerRef = useRef();
 
-  const { error, loading, data, prices, colors, sizes, sleeves, name } =
+  const { error, loading, data, prices, colors, sizes, sleeves, name, dataCart } =
     useSelector((state) => state.products);
 
   const handleSetFilters = useCallback((values) => {
@@ -27,6 +30,10 @@ export default () => {
   const handleOnClick = useCallback((data) => {
     dispatch(setDataById(data))
     modalRef?.current?.open()
+  })
+
+  const handleOnClickFloatBtn = useCallback(() => {
+    drawerRef?.current?.open()
   })
 
   useEffect(() => {
@@ -151,7 +158,14 @@ export default () => {
         </div>
       </div>
     </div>
+    <FloatButton
+    icon={<FaCartPlus  />}
+    style={{transform: "scale(1.5)"}}
+    badge={{count: dataCart?.length}} 
+    onClick={handleOnClickFloatBtn}
+    />
     <ModalProduct ref={modalRef} />
+    <DrawerCart ref={drawerRef}  />
     </>
   );
 };

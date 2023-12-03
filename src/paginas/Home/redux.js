@@ -12,7 +12,11 @@ const initialState = {
     sleeves: null,
     name: null,
 
-    dataById: null
+    dataById: null,
+
+    dataCart: [],
+    resultCart: null,
+    errorCart: null,
 
 }
 
@@ -65,24 +69,53 @@ const slice = createSlice({
     name: 'products',
     initialState,
     reducers: {
+        //grid filters
         setFilter: (state, action) => {
             state[action.payload?.filter] = action.payload?.value
         },
+        //data id setters
         setDataById: (state, action) => {
             state.dataById = action.payload
         },
         clearDataById: (state, action) => {
             state.dataById = null
         },
+        
+        //handle cart
+        setAddToCart: (state, action) => {
+            if (!action.payload?.quantityMax || action.payload?.quantityMax <= 0) {
+                state.errorCart = "El producto se encuentra agotado"
+                return;
+            }
+            if (state.dataCart?.find(v => v?.id == action.payload?.id)) {
+                state.errorCart = "El producto ya se encuentra en el carrito"
+                return;
+            }
+
+            state.dataCart = [...state.dataCart, action.payload]
+            state.resultCart = "El producto ha sido añadido al carrito exitosamente"
+        },
+        setDeleteFromCart: (state, action) => {
+            state.dataCart = state.dataCart?.filter(v => v?.id != action.payload)
+        },
+        setUpdateFromCart: (state, action) => {
+            const indexOf = state.dataCart?.map(v => v?.id)?.indexOf(action.payload?.id);
+            const previousData = state.dataCart[indexOf]
+            const updatedArray = state.dataCart;
+            updatedArray.splice(indexOf, 1, {...previousData, quantity: action.payload?.quantity})
+            state.dataCart = updatedArray
+        },
+        clearResultsCart: (state, action) => {
+            state.errorCart = null
+            state.resultCart = null
+        },
+
+
+        //clear global
         clearResults: (state, action) => {
             state.error = null;
-            state.data = data;
             state.dataById = null;
-
-            state.prices = null;
-            state.colors = null;
-            state.sizes = null;
-            state.sleeves = null;
+            state.dataCart = [];
         },
     },
     extraReducers: (builder) => {
@@ -105,5 +138,5 @@ const slice = createSlice({
 
 export const productsSlice = slice.reducer
 
-export const { clearResults, setFilter, clearDataById, setDataById } = slice.actions
+export const { clearResults, setFilter, clearDataById, setDataById, setAddToCart, setDeleteFromCart, setUpdateFromCart, clearResultsCart } = slice.actions
 
