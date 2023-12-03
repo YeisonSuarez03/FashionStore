@@ -24,7 +24,6 @@ const PublicRoutes = () => {
 
    useEffect(() => {
          document.body.classList.add("app")
-         document.body.classList.add("publicSite")
    }, [])
 
    return (

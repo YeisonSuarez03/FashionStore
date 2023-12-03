@@ -1,0 +1,9 @@
+.cardProduct img{
+    min-height: 300px;
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.cardProduct .ant-card-body{
+    padding: 1.25rem;
+}

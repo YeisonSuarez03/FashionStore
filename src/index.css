@@ -68,6 +68,48 @@ button[aria-checked='false'].ant-switch,
     }
 }
 
+.border-violet-gradient {
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    color: #333;
+}
+
+.border-violet-gradient:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 2px;
+    border-radius: 20px;
+    background: var(--violet-bg-gradient);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+
+.border-violet-gradient.no-rounded:before {
+    border-radius: 0;
+}
+
+.border-violet-gradient.only-bottom:before {
+    padding: 0 0 2px 0;
+}
+
+.border-violet-gradient.thicker:before {
+    padding: 5px;
+}
+
+.border-violet-gradient.only-bottom.thicker:before {
+    padding: 0 0 5px 0;
+}
+
 .text-muted {
     color: var(--text-muted);
 }
@@ -190,7 +232,7 @@ body.app:not(.publicSite) .app__main-content {
 .scrollable::-webkit-scrollbar-track,
 .grid-columns-autofit::-webkit-scrollbar-track,
 .grid-columns-autofit::-webkit-scrollbar {
-    width: 0;
+    width: 6px;
     height: 5px;
     background-color: transparent;
 }
@@ -198,7 +240,7 @@ body.app:not(.publicSite) .app__main-content {
 .app__main-content::-webkit-scrollbar-thumb,
 .scrollable::-webkit-scrollbar-thumb,
 .grid-columns-autofit::-webkit-scrollbar-thumb {
-    width: 0;
+    width: 6px;
     height: 5px;
     background-color: var(--primary);
     border-radius: 15px;
