@@ -11,6 +11,9 @@ const initialState = {
     sizes: null,
     sleeves: null,
     name: null,
+
+    dataById: null
+
 }
 
 //filter functions
@@ -65,9 +68,16 @@ const slice = createSlice({
         setFilter: (state, action) => {
             state[action.payload?.filter] = action.payload?.value
         },
+        setDataById: (state, action) => {
+            state.dataById = action.payload
+        },
+        clearDataById: (state, action) => {
+            state.dataById = null
+        },
         clearResults: (state, action) => {
             state.error = null;
             state.data = data;
+            state.dataById = null;
 
             state.prices = null;
             state.colors = null;
@@ -95,5 +105,5 @@ const slice = createSlice({
 
 export const productsSlice = slice.reducer
 
-export const { clearResults, setFilter } = slice.actions
+export const { clearResults, setFilter, clearDataById, setDataById } = slice.actions
 

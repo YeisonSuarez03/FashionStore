@@ -1,16 +1,18 @@
 import { Checkbox, Form, Input, Result, Slider, Spin } from "antd";
 import { useForm } from "antd/es/form/Form";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { MdSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { formatPrice } from "../../helpers/formatPrice";
 import ProductCard from "./components/ProductCard";
 import { filters } from "./data";
-import { search, setFilter } from "./redux";
+import { search, setDataById, setFilter } from "./redux";
+import ModalProduct from "./components/ModalProduct";
 
 export default () => {
   const dispatch = useDispatch();
   const [form] = useForm();
+  const modalRef = useRef()
 
   const { error, loading, data, prices, colors, sizes, sleeves, name } =
     useSelector((state) => state.products);
@@ -22,11 +24,17 @@ export default () => {
     }
   });
 
+  const handleOnClick = useCallback((data) => {
+    dispatch(setDataById(data))
+    modalRef?.current?.open()
+  })
+
   useEffect(() => {
     dispatch(search());
   }, [prices, colors, sizes, sleeves, name]);
 
   return (
+    <>
     <div className="w-full h-full px-20 pt-6 pb-32">
       <div className="w-full mt-12 mb-32">
         <h1 className="text-center text-6xl font-light border-violet-gradient no-rounded only-bottom thicker pb-10">Busca tus productos en nuestro <b>catálogo virtual</b> </h1>
@@ -122,7 +130,11 @@ export default () => {
             <div className="w-full grid grid-cols-6 gap-5 pl-16">
               {
                 data?.map((item) => (
-                  <ProductCard key={item?.id} item={item} />
+                  <ProductCard 
+                  key={item?.id} 
+                  item={item}
+                  onClick={handleOnClick} 
+                  />
                 ))
               }
               {
@@ -139,5 +151,7 @@ export default () => {
         </div>
       </div>
     </div>
+    <ModalProduct ref={modalRef} />
+    </>
   );
 };

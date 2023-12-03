@@ -4,16 +4,21 @@ import React from "react";
 import { formatPrice } from "../../../../helpers/formatPrice";
 import  './index.css';
 
-export default ({ item }) => {
+export default ({ item, onClick }) => {
+  const ribbonTitle = item?.quantity > 0
+  ? `${item?.quantity} unidades`
+  : "Producto agotado"
+
+  const ribbonColor = item?.quantity > 0 ? "orange" : "gray"
+
   return (
-    <div key={item?.id} className="col-span-2 my-3">
+    <div 
+    key={item?.id} className="col-span-2 my-3"
+    onClick={() => onClick && onClick(item)}
+    >
       <Badge.Ribbon
-        color={item?.quantity > 0 ? "orange" : "default"}
-        title={
-          item?.quantity > 0
-            ? `Hay ${item?.quantity} unidades disponible`
-            : "Producto agotado"
-        }
+        color={ribbonColor}
+        text={ribbonTitle}
       >
         <Card
           className="w-full cardProduct"
