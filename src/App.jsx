@@ -119,7 +119,7 @@ function App() {
                 <Route
                   path="*"
                   element={
-                    <Navigate to={"/404"} />
+                    <Navigate to={"/"} />
                   }
                 />
               </Route>
